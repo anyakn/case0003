@@ -1,8 +1,16 @@
+'''
+Кнопова Анна 70
+Балан Каролина 45
+Шилкова Ульяна 45
+'''
+
+
 from turtle import *
+import ru_local as ru
 
 
 def get_num_hexagons():
-    n = input('Введите количество шестиугольников, располагаемых в ряд, в диапазоне от 4 до 20: ')
+    n = input(ru.num_ans1)
     k = 0
     while k < 1:
         try:
@@ -10,27 +18,28 @@ def get_num_hexagons():
                 k += 1
                 return int(n)
             else:
-                print('Введено некорректное значение. Повторите попытку: ')
-                n = input('Введите количество шестиугольников, располагаемых в ряд, в диапазоне от 4 до 20: ')
+                print(ru.num_ans2)
+                n = input(ru.num_ans1)
         except ValueError:
-            print('Введено некорректное значение. Повторите попытку: ')
-            n = input('Введите количество шестиугольников, располагаемых в ряд, в диапазоне от 4 до 20: ')
+            print(ru.num_ans2)
+            n = input(ru.num_ans1)
 
 
 num = get_num_hexagons()
 d = 500 / (num + 0.5)
 side = (3**0.5 / 3) * d
 
-def get_color_choice():
-    colors = ['оранжево-красный', 'кораловый', 'кадетский-синий', 'тёмно-аспидный синий',
-              'бледно-зелёный', 'светло-коричневый']
-    codes = ['orangered', 'coral', 'cadetblue', 'darkslategray', 'powderblue', 'moccasin']
 
-    print('Допустимые цвета заливки:', 'оранжево-красный', 'кораловый', 'кадетский-синий', 'тёмно-аспидный синий',
-          'бледно-зелёный', 'светло-коричневый', sep='\n')
+def get_color_choice():
+    colors = [ru.color_1, ru.color_2, ru.color_3, ru.color_4,
+              ru.color_5, ru.color_6]
+    codes = [ru.code_1, ru.code_2, ru.code_3, ru.code_4, ru.code_5, ru.code_6]
+
+    print(ru.color_ans1, ru.color_1, ru.color_2, ru.color_3, ru.color_4,
+          ru.color_5, ru.color_6, sep='\n')
 
     first_one = ''
-    chosen_one = input('Пожалуйста, выберете цвет: ').lower()
+    chosen_one = input(ru.color_ans2).lower()
 
     while first_one == '':
         for idx in range(6):
@@ -38,11 +47,11 @@ def get_color_choice():
                 idx = colors.index(chosen_one)
                 first_one = codes[idx]
             else:
-                print(chosen_one, 'не является верным значением')
-                chosen_one = input('Пожалуйста, повторите попытку: ').lower()
+                print(chosen_one, ru.color_ans3)
+                chosen_one = input(ru.color_ans4).lower()
 
     second_one = ''
-    chosen_two = input('Пожалуйста, выберете цвет: ').lower()
+    chosen_two = input(ru.color_ans2).lower()
 
     while second_one == '':
         for idx in range(6):
@@ -50,8 +59,8 @@ def get_color_choice():
                 idx = colors.index(chosen_two)
                 second_one = codes[idx]
             else:
-                print(chosen_two, 'не является верным значением')
-                chosen_two = input('Пожалуйста, повторите попытку: ').lower()
+                print(chosen_two, ru.color_ans3)
+                chosen_two = input(ru.color_ans4).lower()
 
     return first_one, second_one
 
@@ -72,11 +81,9 @@ def draw_hexagon(x, y, side_len, colour):
         fd(side_len)
         rt(60)
 
-
     end_fill()
     pu()
     lt(30)
-
 
 
 wdth = 250
@@ -101,7 +108,6 @@ for k in range(num):
 
         lngth += d
     wdth -= 1.5 * side
-
 
 
 hideturtle()
